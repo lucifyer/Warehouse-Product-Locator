@@ -7,23 +7,25 @@ session_start();
 require_once './db.php';
 
 // Make sure email and hash variables aren't empty
-if( isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash']) )
+if( isset($_GET['username']) && !empty($_GET['username']) AND isset($_GET['hash']) && !empty($_GET['hash']) )
 {
     $_SESSION['email'] = mysqli_real_escape_string($con,$_GET['email']);
     $_SESSION['hash'] = mysqli_real_escape_string($con,$_GET['hash']);
 
     // Make sure user email with matching hash exist
-    $result = mysqli_query($con,"SELECT * FROM login WHERE email='$_SESSION[email]' AND hash='$_SESSION[hash]'");
+    $result = mysqli_query($con,"SELECT * FROM employee WHERE email_id='$_SESSION[email]' AND hash='$_SESSION[hash]'");
+
+    echo "SELECT * FROM employee WHERE email_id='$_SESSION[email]' AND hash='$_SESSION[hash]'";
 
     if ( mysqli_num_rows($result) == 0 )
     {
         $_SESSION['message'] = "You have entered invalid URL for password reset!";
-        header("location: ./error.php");
+        // header("location: ./error.php");
     }
 }
 else {
     $_SESSION['message'] = "Sorry, verification failed, try again!";
-    header("location: ./error.php");
+    // header("location: ./error.php");
 }
 ?>
 <!DOCTYPE html>

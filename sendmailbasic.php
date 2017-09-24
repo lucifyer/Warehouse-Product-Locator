@@ -5,7 +5,7 @@
 
 		$mail_to = $email_id;
 		$mail_sub = $subject;
-		$From_name= "Veronica";
+		$From_name= "The Neutrons";
 		$mail_content = $body;
 
 		require_once('PHPMailer-master/PHPMailerAutoload.php');

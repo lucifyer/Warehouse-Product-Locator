@@ -1,54 +1,53 @@
 <?php
 /* Reset your password form, sends reset.php password link */
 
-include 'include/sendmailbasic.php';
+include 'sendmailbasic.php';
 
-require_once 'include/db.php';
+require_once 'db.php';
 
 
 // Check if form submitted with method="post"
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
 {
     $email = mysqli_real_escape_string($con,$_POST['email']);
-    $result = mysqli_query($con,"SELECT * FROM login WHERE email='$email'");
+    $query= "SELECT * FROM employee WHERE email_id='$email'";
+    $result = mysqli_query($con,$query);
 
     if (  mysqli_num_rows($result) == 0 ) // User doesn't exist
     {
         $message = "User with that email doesn't exist!";
-        echo "<script>alert('$message');</script>";
-        header('Refresh:0;url=./forgot.php');
+        echo $message;
     }
     else { // User exists (num_rows != 0)
 
         $user = mysqli_fetch_assoc($result); // $user becomes array with user data
 
-        $email = $user['email'];
-        $username = $user['username'];
+        $email = $user['email_id'];
         $hash=$user['hash'];
-
 
         // Send registration confirmation link (reset.php)
 
         $to      = $email;
-        $subject = 'Password Reset Link ( Veronica )';
+        $subject = 'Password Reset Link ( Hackathon )';
         $message_body = '
-        Hello '.$username.',
+        Hello '.$email.',
 
         You have requested password reset!
 
         Please click this link to reset your password:
 
-        http://localhost/projects/finallogin/reset.php?email='.$email.'&hash='.$hash;
+        http://localhost/hackathon/reset.php?email='.$email.'&hash='.$hash;
 
         if(email_std($to, $subject, $message_body))
         {
             $message = "Password reset link has been sent to email address!";
             echo "<script>alert('$message');</script>";
-            header('Refresh:0;url=./index.php');
+            header('Refresh:0;url=./index.html');
         }
 
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html>

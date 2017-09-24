@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION['logged_in']))
+{
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,29 +34,45 @@
 
         function loadsuggestion()
         {
-            var address='searchquery.php?value='+document.getElementById('string').value;
-            var xhr= new XMLHttpRequest();
-            xhr.open('GET',address,true);
-
-            xhr.onload=function()
+            if(document.getElementById('string').value!='')
             {
-                if(this.status==200)
+                var address='searchquery.php?value='+document.getElementById('string').value;
+                var xhr= new XMLHttpRequest();
+                xhr.open('GET',address,true);
+
+                xhr.onload=function()
                 {
-                    var resultvar=JSON.parse(this.responseText);
-                    var resultstring='';
-                    var i=0;
-                    while(resultvar[i])
+                    if(this.status==200)
                     {
-                        resultstring+="<a href='location.php?name="+resultvar[i]+"'>"+resultvar[i]+'</a><br>';
-                        i+=1;
+                        var resultvar=JSON.parse(this.responseText);
+                        var resultstring='';
+                        var i=0;
+                        while(resultvar[i])
+                        {
+                            resultstring+="<a href='location.php?name="+resultvar[i]+"'>"+resultvar[i]+'</a><br>';
+                            i+=1;
+                        }
+                        document.getElementById('result').innerHTML=resultstring;
                     }
-                    document.getElementById('result').innerHTML=resultstring;
                 }
+                xhr.send();
             }
-            xhr.send();
+            else {
+                document.getElementById('result').innerHTML='';
+            }
         }
 
 
     </script>
 </body>
 </html>
+
+<?php
+    }
+    else {
+        $message = "Please login to view this page!";
+        echo "<script>alert('$message');</script>";
+        header('Refresh:0;url=./index.php');
+    }
+
+?>

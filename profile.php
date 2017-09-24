@@ -3,10 +3,13 @@
 
     if(isset($_SESSION['logged_in']))
     {
+        $admin = false;
         if($_SESSION['image']=='')
             $dp='images/default.png';
         else
             $dp=$_SESSION['image'];
+        if($_SESSION['email']=='admin@admin.com')
+            $admin =true;
 
 ?>
 
@@ -17,12 +20,24 @@
     <title>Profile</title>
   </head>
   <body>
-      <h1>Hey <?php echo $_SESSION['username']?></h1>
+      <h1>Hey <?php echo $_SESSION['email']?></h1>
       <img src="<?php echo $dp ?>" width="70px" height="80px" alt="error"><br>
 
     <a href="./change.php">Change your password</a>
-    <a href="./changedp.php">Change your display picture</a>
+    <a href="./search.php">Search product</a>
+
+    <?php if($admin)
+        {
+            echo ('<a href="./registeremployee.php">Add an employee</a>');
+            echo ('<a href="./addproduct.php">Add a product</a>');
+        }
+        else {
+            echo ('<a href="./listitems.php">Cart</a>');
+        }
+    ?>
+
     <a href="./logout.php">Logout</a>
+
   </body>
 </html>
 <?php

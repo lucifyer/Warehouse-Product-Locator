@@ -22,12 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = mysqli_real_escape_string($con,$_SESSION['email']);
         $hash = mysqli_real_escape_string($con,$_SESSION['hash']);
 
-        $sql = "UPDATE login SET password='$new_password', hash='$new_hash' WHERE email='$email'";
+        $sql = "UPDATE employee SET password='$new_password', hash='$new_hash' WHERE email_id='$email'";
 
         if ( mysqli_query($con,$sql) )
         {
-
-        $_SESSION['message'] = "Your password has been reset successfully! Please login to continue!";
 
         $message = "Your password has been reset successfully! Please login to continue!";
         echo "<script>alert('$message');</script>";

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+  <script src="bootstrap/js/bootstrap.js"></script>
+
+
+  <title>Login</title>
+  <style>
+
+  body{
+    margin:0;
+    font: normal 16px Arial, Helvetica, sand-serif;
+    color:#333;
+  }
+
+  #particles-js{
+    background:firebrick;
+    height:100vh;
+  }
+
+  #login{
+    background:#fff;
+    opacity:0.9;
+    padding:2em;
+    border:#ccc 2px solid;
+    position:absolute;
+    top:100px;
+    left:50px;
+  }
+
+  #login input[type="text"], #login input[type="password"]{
+    padding:7px;
+    margin-bottom:10px;
+    border:1px #ccc solid;
+  }
+</style>
+
+  <script>
+
+  //To check wether both the passwords are same
+      function validate()
+      {
+          if(document.getElementById('password').value==document.getElementById('password2').value)
+            return true;
+          else {
+              alert('Passwords do not match!');
+              return false;
+          }
+      }
+  </script>
+
+
+</head>
+<body>
+    <script src="particles.js"></script>
+
+    <script>
+      particlesJS.load('particles-js', 'particles.json', function(){
+        console.log('particles.json loaded...');
+      });
+    </script>
+  <div id="particles-js"></div>
+    <div id="login">
+        <form action="login.php" method="post">
+          <label>Email</label>
+          <input class="form-control" type="text" required name="email" />
+
+          <label>Password</label>
+          <input class="form-control" type="password" required name="password" />
+          <p><a href="forgot.php">Forgot Password?</a></p>
+
+          <button class = "btn btn-success" type="submit" name="login"/>Log In</button>
+
+        </form>
+    </div>
+  </div>
+
+
+</body>
+</html>

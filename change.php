@@ -11,15 +11,16 @@ require_once './db.php';
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
 {
-    if( isset($_SESSION['username']) && !empty($_SESSION['username']) AND isset($_SESSION['logged_in']) && !empty($_SESSION['logged_in']) ) //Check if user is logged in
+    if( isset($_SESSION['email']) && !empty($_SESSION['email']) AND isset($_SESSION['logged_in']) && !empty($_SESSION['logged_in']) ) //Check if user is logged in
     {
-      $result = mysqli_query($con,"SELECT * FROM login WHERE username='$_SESSION[username]'");
+      $result = mysqli_query($con,"SELECT * FROM employee WHERE email_id='$_SESSION[email]'");
 
       $user = mysqli_fetch_assoc($result); // $user becomes array with user data
 
       if(password_verify($_POST['password'],$user['password']))
       {
-        $address='http://localhost/projects/finallogin/reset.php?email='.$user['email'].'&hash='.$user['hash'];
+        $address='http://localhost/hackathon/reset.php?email='.$user['email_id'].'&hash='.$user['hash'];
+
         header("location: $address");
     }
     else {
