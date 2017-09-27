@@ -1,0 +1,6 @@
+TODO
+
+// Add a clean UI and UX
+// Make it user friendly
+// Test all components
+
