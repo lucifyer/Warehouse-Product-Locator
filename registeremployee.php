@@ -12,62 +12,96 @@
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add new Employee</title>
+    <!DOCTYPE html>
+    <html lang="en">
 
-    <script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    //To check wether both the passwords are same
-        function validate()
-        {
-            if(document.getElementById('password').value==document.getElementById('password2').value)
-              return true;
-            else {
-                alert('Passwords do not match!');
-                return false;
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <script src="bootstrap/js/bootstrap.js"></script>
+
+        <title>Add new Employee</title>
+
+        <script>
+            //To check wether both the passwords are same
+            function validate() {
+                if (document.getElementById('password').value == document.getElementById('password2').value)
+                    return true;
+                else {
+                    alert('Passwords do not match!');
+                    return false;
+                }
             }
-        }
-    </script>
-</head>
-<body>
+        </script>
+    </head>
 
-    <form action="register.php" onsubmit="return validate()" method="post" enctype="multipart/form-data">
+    <body>
 
-        <label for="empid">Employee ID:</label>
-        <input type="text" name="empid" ><br>
+        <h1>Register a new employee!</h1>
 
-      <label for="name">Name</label>
-      <input type="text" required name='name' /><br>
+        <div class="container">
 
 
-      <label for="email">Email Address</label>
-      <input type="email" required name='email' /><br>
+        <form action="register.php" onsubmit="return validate()" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-lg-3">
 
-      <label for="password">Password</label>
-      <input type="password" required name='password' id="password" /><br>
+                </div>
+                
+            <div class="col-lg-7">
+                <label for="empid">Employee ID:</label>
+                <input class="form-control" type="text" name="empid"><br>
+            </div>
+            <div class="col-lg-3">
 
-      <label for="password2">Re-enter Password</label>
-      <input type="password" required name='password2' id="password2" /><br>
+            </div>
+            <div class="col-lg-7">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" required name='name' /><br></div>
+            <div class="col-lg-3">
 
-      <label for="image">Display Picture</label>
-      <input type="file" name="image"><br>
+            </div>
 
-      <button type="submit" name="register" />Register</button>
+            <div class="col-lg-7">
+                <label for="email">Email Address</label>
+                <input class="form-control" type="email" required name='email' /><br></div>
+            <div class="col-lg-3">
 
-    </form>
+            </div>
+            <div class="col-lg-7">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" required name='password' id="password" /><br></div>
+            <div class="col-lg-3">
 
-</body>
-</html>
+            </div>
+            <div class="col-lg-7">
+                <label for="password2">Re-enter Password</label>
+                <input class="form-control" type="password" required name='password2' id="password2" /><br></div>
+            <div class="col-lg-3">
+
+            </div>
+            <div class="col-lg-7">
+                <label for="image">Display Picture</label>
+                <input class="form-control" type="file" name="image"><br>
+                <div class="col-lg-7">
+                    <button class="btn btn-danger" type="submit" name="register" />Register</button>
+
+        </form>
+
+
+    </div>
+
+    </body>
+
+    </html>
 
 
 
 
-<?php
+    <?php
     }
     else {
         $message = "Please login to view this page!";

@@ -11,7 +11,10 @@
         echo 'cart is empty!';
     }
     else {
+        echo '<h1>Your cart contains</h1>';
         echo '<table border=1>';
+        echo '<th>Barcode</th>';
+        echo '<th>Product Name</th>';
         while($row = mysqli_fetch_array($result))
         {
             echo '<tr>';

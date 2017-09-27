@@ -16,16 +16,34 @@ if(isset($_SESSION['logged_in']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="bootstrap/js/bootstrap.js"></script>
+
+    <style media="screen">
+        a{
+            text-decoration: none;
+        }
+    </style>
+
     <title>Search</title>
 </head>
 <body>
 
+    <h1>Search for the location of product</h1>
     <form  method="GET">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-8">
+
+
         <label for="string">Enter the product name</label>
-        <input type="text" name="string" id="string" onkeyup="loadsuggestion()">
+        <input type="text" class="form-control" name="string" id="string" onkeyup="loadsuggestion()">
         <div id="result">
 
         </div>
+            </div>
 
     </form>
 

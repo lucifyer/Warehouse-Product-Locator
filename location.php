@@ -33,9 +33,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <script src="bootstrap/js/bootstrap.js"></script>
+
     <title>Search Location</title>
 </head>
 <body>
+
+    <div class="container">
+
+
 
     <h1>Your product will be found at </h1>
     <?php
@@ -48,11 +57,18 @@
     ?>
 
     <form action="pickproduct.php" method="post">
-        <label for="barcode">Enter the barcode of item picked</label>
-        <input type="text" name="barcode"><br>
+        <div class="row">
 
-        <input type="submit" value="Pick product">
+        <label for="barcode">Enter the barcode of item picked</label><br>
+        <input type="text" class="col-lg-5" name="barcode"><br><br>
+
+        <input class="btn btn-danger" type="submit" value="Pick product">
+
+
+                </div>
     </form>
+
+    </div>
 
 
 

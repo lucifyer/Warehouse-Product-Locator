@@ -11,7 +11,14 @@
 
     $query = "DELETE from productinfo where barid=$barcode";
 
+
+
     mysqli_query($con,$query);
+
+
+        $message = "Item Picked";
+        echo "<script>alert('$message');</script>";
+        header('Refresh:0;url=./profile.php');
 
     mysqli_close($con);
 
